@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="buttoncont">
+        <button id="addprojbtn">Make Project</button>
+    </div>
+    <div id="projectcont">
+
+    </div>
+    <form class="hidden" action="" id="projectform">
+        <label for="ProjectName">Name</label>
+        <input type="text" name="ProjectName" id="ProjectName">
+        <button type="submit" id="submitbtmprojform">Create</button>
+    </form>
+    <form class="hidden"id="taskform" action="">
+        <label for="taskinp">Task</label>
+        <input name="taskinp" id="taskinp" type="text">
+        <label for="descinp">Description</label>
+        <textarea name="descinp" id="descinp"></textarea>
+        <label for="dateinp">Due Date</label>
+        <input type="date"id="dateinp"name="dateinp">
+       <label for="">Priority</label>
+       <label for="">
+        <input name="radioinp"type="radio" value="High">
+        High
+       </label>
+         <label for="">
+        <input name="radioinp" type="radio" value="Medium">
+        Medium
+       </label>
+         <label for="">
+        <input name="radioinp" type="radio" value="Low">
+        Low
+       </label>
+       <button type="submit" id="submittask">Create</button>
+    </form>
+</body>
+</html>

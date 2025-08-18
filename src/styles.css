@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  width: 100vw;
+  height: 100vh;
+    /* soft, muted base color */
+  background-color: #aea6bd;  /* light gray-blue, soft on eyes */
+
+  /* cubes texture overlay */
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+  background-repeat: repeat;
+  background-size: auto;
+
+  /* blend the texture gently with the base */
+  background-blend-mode: overlay;
+
+  /* optional for smooth appearance */
+  color: #292929;
+}
+#buttoncont{
+    width: 100vw;
+    border: 2px solid black;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+#projectcont{
+    border: 2px solid black;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+}
+.project{
+    margin: 1rem;
+    border: 2px solid black;
+    width: 80%;
+    min-height: 7rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #bfb6d0;
+    
+}
+.taskunder{
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+#projectform{
+    background-color: beige;
+    border: 2px solid black;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20rem;
+    height: 6rem;
+    row-gap: 0.8rem;
+    justify-self: center;
+    position: absolute;
+    top: 10rem;
+}
+#taskform{
+      background-color: beige;
+    border: 2px solid black;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20rem;
+  
+    row-gap: 0.8rem;
+    justify-self: center;
+    position: absolute;
+    top: 10rem;
+}
+.hidden {
+  visibility: hidden;
+}
+#taskmake{
+  width: 3rem;
+  height: 2rem;
+}
+.taskdiv{
+  background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;    /* forces each on its own line */
+   width: 10rem;
+   min-height: 5rem;
+   align-items: center;
+   flex-grow: 1;
+}
+.projecttitle{
+  align-self: center;
+}
