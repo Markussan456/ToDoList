@@ -5,6 +5,7 @@ export const projects = [];
 export class DataManager{
     constructor(){
 this.currentprojiks = null;
+this.currenttasky = null;
     }
     addproject(title){
         const project = {
@@ -33,8 +34,28 @@ return task;
 this.currentprojiks = projekts;
 console.log("Selected project:", this.currentprojiks);
 }
+currenttask(task){
+    this.currenttasky = task;
+    console.log("selected task:",this.currenttasky);
+}
+getcurrenttask(){
+    return this.currenttasky;
+}
 getcurrentproj(){
     return this.currentprojiks;
+}
+removeproject(projectk){
+const index = projects.findIndex(project => project.id === projectk.id)
+if(index !==-1){
+    projects.splice(index,1);
+}
+console.log(projects);
+}
+removetask(project,taskk){
+   const index = project.tasky.findIndex(tasky => tasky.id === taskk.id)
+   if(index !==-1){
+    project.tasky.splice(index,1);
+}
 }
 }
 const datamanger = new DataManager();

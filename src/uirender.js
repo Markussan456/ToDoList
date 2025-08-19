@@ -10,9 +10,12 @@ this.projcontainer = document.getElementById("projectcont");
     };
 appendproject(project){
     const projectDiv = document.createElement("div");
+    const deletebtn = document.createElement("button");
+    deletebtn.textContent = "X";
    const addtaskbtn = document.createElement("button");
    const title = document.createElement("span");
    title.classList.add("projecttitle");
+   deletebtn.id = `btndel-${project.id}`
    addtaskbtn.id = project.id;
    addtaskbtn.textContent = "Add task";
     projectDiv.id = project.id;
@@ -21,13 +24,14 @@ appendproject(project){
 this.projcontainer.appendChild(projectDiv);
 projectDiv.appendChild(title);
 projectDiv.appendChild(addtaskbtn);
+projectDiv.appendChild(deletebtn);
 
 const taskContainer = document.createElement("div");
     taskContainer.classList.add("taskunder");
     taskContainer.id = `tasks-${project.id}`; // unique id per project
     projectDiv.appendChild(taskContainer);
 
-return {projectDiv ,addtaskbtn,taskContainer};
+return {projectDiv ,addtaskbtn,deletebtn};
 
 }
 appendtask(project,task){
@@ -38,7 +42,9 @@ const title = document.createElement("span");
 const desc = document.createElement("span");
 const date = document.createElement("span");
 const priority = document.createElement("span");
-
+const deletonbtn = document.createElement("button");
+deletonbtn.id = `btndel-${task.id}`;
+deletonbtn.textContent = "X";
 title.textContent = task.titles;
 desc.textContent = task.desc;
 date.textContent = task.datums;
@@ -47,9 +53,10 @@ taskdiv.appendChild(title);
 taskdiv.appendChild(desc);
 taskdiv.appendChild(date);
 taskdiv.appendChild(priority);
+taskdiv.appendChild(deletonbtn);
 const projectTaskContainer = document.getElementById(`tasks-${project.id}`);
 projectTaskContainer.appendChild(taskdiv);
-
+return {taskdiv,deletonbtn};
 }
 
 hideprojectpanel(){

@@ -33,13 +33,21 @@ projectlistenr(){
                 const formData = new FormData(this.projectform);
                const title = formData.get("ProjectName");
                const newproj = datamanger.addproject(title);
-               const {projectDiv,addtaskbtn} = UiManagers.appendproject(newproj);
+               const {projectDiv,addtaskbtn,deletebtn} = UiManagers.appendproject(newproj);
               this.projectlistener(newproj,projectDiv);
             UiManagers.hideprojectpanel();
             this.tasklistener(addtaskbtn,newproj);
             datamanger.currentproj(newproj);
             this.projectform.querySelector("#ProjectName").value = "";
+            this.deleteproj(deletebtn,projectDiv);
         })
+}
+deleteproj(button,projectdivs){
+    const thecurrentproj = datamanger.getcurrentproj();
+button.addEventListener("click",()=>{
+    datamanger.removeproject(thecurrentproj);
+projectdivs.remove();
+})
 }
 projectpanellistener(){
     this.createprojectbtn.addEventListener("click",()=>{
@@ -74,9 +82,30 @@ button.addEventListener("click",()=>{
 newtask(titles,descr,dates,prio){
     const currentp = datamanger.getcurrentproj();
     const task = datamanger.addtask(currentp,titles,descr,dates,prio);
-    UiManagers.appendtask(currentp,task);
+    const {taskdiv,deletonbtn} = UiManagers.appendtask(currentp,task);
+    this.tasklisteners(task,taskdiv);
+    this.deletetask(deletonbtn,taskdiv,task,currentp);
+}
+tasklisteners(task,taskdiv){
+    if(taskdiv === null){
+        console.log("taskdiv null");
+    }else{
+    taskdiv.addEventListener("click",()=>{
+datamanger.currenttask(task);
+    })
+    }
+}
+deletetask(button,taskdivs,taskons,currentsprojekts){
+    button.addEventListener("click",()=>{
+        
+        datamanger.currentproj(currentsprojekts);
+    const currenttask = datamanger.getcurrenttask();
+        datamanger.removetask(currentsprojekts,taskons);
+taskdivs.remove();
+    });
 }
 }
+
   const listener = new AddListeners();
 document.addEventListener("DOMContentLoaded", () => {
   
