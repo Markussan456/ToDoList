@@ -82,9 +82,10 @@ button.addEventListener("click",()=>{
 newtask(titles,descr,dates,prio){
     const currentp = datamanger.getcurrentproj();
     const task = datamanger.addtask(currentp,titles,descr,dates,prio);
-    const {taskdiv,deletonbtn} = UiManagers.appendtask(currentp,task);
+    const {taskdiv,deletonbtn,editbtn} = UiManagers.appendtask(currentp,task);
     this.tasklisteners(task,taskdiv);
     this.deletetask(deletonbtn,taskdiv,task,currentp);
+    this.eidttask(editbtn,task,currentp,taskdiv);
 }
 tasklisteners(task,taskdiv){
     if(taskdiv === null){
@@ -99,10 +100,21 @@ deletetask(button,taskdivs,taskons,currentsprojekts){
     button.addEventListener("click",()=>{
         
         datamanger.currentproj(currentsprojekts);
-    const currenttask = datamanger.getcurrenttask();
         datamanger.removetask(currentsprojekts,taskons);
 taskdivs.remove();
     });
+}
+eidttask(button,task,currenp,taskdiv){
+button.addEventListener("click",()=>{
+ datamanger.currentproj(currenp);
+ datamanger.editcurrenttask(task,"cock","ppussij","lol","shiko");
+ const { taskdiv: newDiv, deletonbtn, editbtn } = UiManagers.appendtask(currenp, task);
+ taskdiv.parentNode.insertBefore(newDiv, taskdiv);
+this.tasklisteners(task,newDiv);
+this.deletetask(deletonbtn,newDiv,task,currenp);
+this.eidttask(editbtn,task,currenp,newDiv);
+taskdiv.remove();
+})
 }
 }
 

@@ -43,6 +43,9 @@ const desc = document.createElement("span");
 const date = document.createElement("span");
 const priority = document.createElement("span");
 const deletonbtn = document.createElement("button");
+const editbtn = document.createElement("button");
+editbtn.id = `btnedit-${task.id}`;
+editbtn.textContent = "Edit";
 deletonbtn.id = `btndel-${task.id}`;
 deletonbtn.textContent = "X";
 title.textContent = task.titles;
@@ -54,9 +57,10 @@ taskdiv.appendChild(desc);
 taskdiv.appendChild(date);
 taskdiv.appendChild(priority);
 taskdiv.appendChild(deletonbtn);
+taskdiv.appendChild(editbtn);
 const projectTaskContainer = document.getElementById(`tasks-${project.id}`);
 projectTaskContainer.appendChild(taskdiv);
-return {taskdiv,deletonbtn};
+return {taskdiv,deletonbtn,editbtn};
 }
 
 hideprojectpanel(){

@@ -57,6 +57,13 @@ removetask(project,taskk){
     project.tasky.splice(index,1);
 }
 }
+editcurrenttask(task,title,des,date,priority){
+    task.titles = title;
+    task.desc = des;
+    task.datums = date;
+    task.prioritate = priority;
+  
+}
 }
 const datamanger = new DataManager();
 export default datamanger;
