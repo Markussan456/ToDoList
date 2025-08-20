@@ -9,6 +9,7 @@ class AddListeners{
         this.projectform = document.getElementById("projectform");
         this.createprojbtn = document.getElementById("submitbtmprojform");
         this.taskform = document.getElementById("taskform");
+         this.editingTask = null;
     }
    
     addlistenerss(){
@@ -21,7 +22,22 @@ const title = formData.get("taskinp");
 const desc = formData.get("descinp");
 const date = formData.get("dateinp");
 const priority = formData.get("radioinp");
-this.newtask(title,desc,date,priority);
+
+if(this.editingTask){
+    datamanger.editcurrenttask(this.editingTask, title, desc, date, priority);
+     const proj = datamanger.getcurrentproj();
+    const oldDiv = this.editingTask.div;
+    const { taskdiv, deletonbtn, editbtn } = UiManagers.appendtask(proj, this.editingTask);
+    oldDiv.parentNode.replaceChild(taskdiv, oldDiv);
+     this.tasklisteners(this.editingTask, taskdiv);
+    this.deletetask(deletonbtn, taskdiv, this.editingTask, proj);
+    this.edittask(editbtn, this.editingTask, proj, taskdiv);
+
+    this.editingTask = null; // reset
+}else{
+    this.newtask(title, desc, date, priority);
+}
+
 this.taskform.classList.add("hidden");
 this.taskform.reset();
     })
@@ -83,9 +99,12 @@ newtask(titles,descr,dates,prio){
     const currentp = datamanger.getcurrentproj();
     const task = datamanger.addtask(currentp,titles,descr,dates,prio);
     const {taskdiv,deletonbtn,editbtn} = UiManagers.appendtask(currentp,task);
-    this.tasklisteners(task,taskdiv);
+ 
+   this.tasklisteners(task,taskdiv);
     this.deletetask(deletonbtn,taskdiv,task,currentp);
-    this.eidttask(editbtn,task,currentp,taskdiv);
+    this.edittask(editbtn,task,currentp,taskdiv);
+  
+ 
 }
 tasklisteners(task,taskdiv){
     if(taskdiv === null){
@@ -104,16 +123,19 @@ deletetask(button,taskdivs,taskons,currentsprojekts){
 taskdivs.remove();
     });
 }
-eidttask(button,task,currenp,taskdiv){
+edittask(button,task,currenp,taskdiv){
 button.addEventListener("click",()=>{
- datamanger.currentproj(currenp);
- datamanger.editcurrenttask(task,"cock","ppussij","lol","shiko");
- const { taskdiv: newDiv, deletonbtn, editbtn } = UiManagers.appendtask(currenp, task);
- taskdiv.parentNode.insertBefore(newDiv, taskdiv);
-this.tasklisteners(task,newDiv);
-this.deletetask(deletonbtn,newDiv,task,currenp);
-this.eidttask(editbtn,task,currenp,newDiv);
-taskdiv.remove();
+   UiManagers.showtaskpanel();
+
+    // prefill form
+    document.querySelector("#taskinp").value = task.titles;
+    document.querySelector("#descinp").value = task.desc;
+    document.querySelector("#dateinp").value = task.datums;
+    document.querySelector(`input[name="radioinp"][value="${task.prioritate}"]`).checked = true;
+
+    // store what we’re editing
+    this.editingTask = task;
+    task.div = taskdiv; // keep reference to the old div
 })
 }
 }

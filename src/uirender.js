@@ -7,6 +7,7 @@ class UiManager{
 this.projcontainer = document.getElementById("projectcont");
  this.projectform = document.getElementById("projectform");
  this.taskform = document.getElementById("taskform");
+
     };
 appendproject(project){
     const projectDiv = document.createElement("div");

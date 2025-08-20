@@ -19,22 +19,22 @@
     </form>
     <form class="hidden"id="taskform" action="">
         <label for="taskinp">Task</label>
-        <input name="taskinp" id="taskinp" type="text">
+        <input name="taskinp" id="taskinp" type="text" required>
         <label for="descinp">Description</label>
-        <textarea name="descinp" id="descinp"></textarea>
+        <textarea name="descinp" id="descinp" required></textarea>
         <label for="dateinp">Due Date</label>
-        <input type="date"id="dateinp"name="dateinp">
+        <input type="date"id="dateinp"name="dateinp" required>
        <label for="">Priority</label>
        <label for="">
-        <input name="radioinp"type="radio" value="High">
+        <input name="radioinp"type="radio" value="high" required>
         High
        </label>
          <label for="">
-        <input name="radioinp" type="radio" value="Medium">
+        <input name="radioinp" type="radio" value="medium">
         Medium
        </label>
          <label for="">
-        <input name="radioinp" type="radio" value="Low">
+        <input name="radioinp" type="radio" value="low">
         Low
        </label>
        <button type="submit" id="submittask">Create</button>
