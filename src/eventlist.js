@@ -19,23 +19,23 @@ class AddListeners{
 event.preventDefault();
 const formData = new FormData(this.taskform);
 const title = formData.get("taskinp");
-const desc = formData.get("descinp");
-const date = formData.get("dateinp");
+const desco = formData.get("descinp");
+const dated = formData.get("dateinp");
 const priority = formData.get("radioinp");
 
 if(this.editingTask){
-    datamanger.editcurrenttask(this.editingTask, title, desc, date, priority);
+    datamanger.editcurrenttask(this.editingTask, title, desco, dated, priority);
      const proj = datamanger.getcurrentproj();
     const oldDiv = this.editingTask.div;
-    const { taskdiv, deletonbtn, editbtn } = UiManagers.appendtask(proj, this.editingTask);
+    const {taskdiv,deletonbtn,editbtn,hidebtn,desc,date} = UiManagers.appendtask(proj, this.editingTask);
     oldDiv.parentNode.replaceChild(taskdiv, oldDiv);
      this.tasklisteners(this.editingTask, taskdiv);
     this.deletetask(deletonbtn, taskdiv, this.editingTask, proj);
     this.edittask(editbtn, this.editingTask, proj, taskdiv);
-
+this.hidetask(hidebtn,desc,date,deletonbtn,editbtn);
     this.editingTask = null; // reset
 }else{
-    this.newtask(title, desc, date, priority);
+    this.newtask(title, desco, dated, priority);
 }
 
 this.taskform.classList.add("hidden");
@@ -98,11 +98,12 @@ button.addEventListener("click",()=>{
 newtask(titles,descr,dates,prio){
     const currentp = datamanger.getcurrentproj();
     const task = datamanger.addtask(currentp,titles,descr,dates,prio);
-    const {taskdiv,deletonbtn,editbtn} = UiManagers.appendtask(currentp,task);
+    const {taskdiv,deletonbtn,editbtn,hidebtn,desc,date} = UiManagers.appendtask(currentp,task);
  
    this.tasklisteners(task,taskdiv);
     this.deletetask(deletonbtn,taskdiv,task,currentp);
     this.edittask(editbtn,task,currentp,taskdiv);
+    this.hidetask(hidebtn,desc,date,deletonbtn,editbtn);
   
  
 }
@@ -114,6 +115,22 @@ tasklisteners(task,taskdiv){
 datamanger.currenttask(task);
     })
     }
+}
+hidetask(button,desc,date,deletbtn,editbtn){
+    
+    button.addEventListener("click",()=>{
+        if(!((desc.classList.contains("hiddentask")&&date.classList.contains("hiddentask"))&&(deletbtn.classList.contains("hiddentask")&&editbtn.classList.contains("hiddentask")))){
+            desc.classList.add("hiddentask");
+            date.classList.add("hiddentask");
+            deletbtn.classList.add("hiddentask");
+            editbtn.classList.add("hiddentask");
+        }else if((desc.classList.contains("hiddentask")&&date.classList.contains("hiddentask"))&&(deletbtn.classList.contains("hiddentask")&&editbtn.classList.contains("hiddentask"))){
+            desc.classList.remove("hiddentask");
+            date.classList.remove("hiddentask");
+              deletbtn.classList.remove("hiddentask");
+            editbtn.classList.remove("hiddentask");
+        }
+    })
 }
 deletetask(button,taskdivs,taskons,currentsprojekts){
     button.addEventListener("click",()=>{

@@ -114,3 +114,6 @@ body {
 .projecttitle{
   align-self: center;
 }
+.hiddentask{
+  display: none;
+}
