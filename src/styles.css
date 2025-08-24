@@ -22,6 +22,34 @@ body {
   /* optional for smooth appearance */
   color: #292929;
 }
+.project  button{
+  cursor: pointer;
+
+}
+.project > button{
+  width: 4rem;
+  margin: 0.2rem;
+  background-color: #edcff4;
+  align-self: center;
+  border: none;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.project > button:hover{
+ background-color: #8c89ad;
+ border-radius: 0.2rem;
+}
+.taskdiv button{
+   width: 6rem;
+  margin: 0.2rem;
+  background-color: #edcff4;
+  align-self: center;
+  border: none;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.taskdiv button:hover{
+   background-color: #8c89ad;
+ border-radius: 0.2rem;
+}
 #buttoncont{
     width: 100vw;
     border: 2px solid black;
@@ -39,12 +67,14 @@ body {
 .project{
     margin: 1rem;
     border: 2px solid black;
-    width: 80%;
+    max-width: 70%;
+    min-width: 30%;
     min-height: 7rem;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    background-color: #bfb6d0;
+    background-color: #f2cdf7;
+    border-radius: 0.4rem;
     
 }
 .taskunder{
@@ -52,22 +82,112 @@ body {
   flex-wrap: wrap;
   
 }
+#submitbtmprojform{
+    padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #5a5aee, #7f7fff);
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+}
+#submitbtmprojform:hover{
+   transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #4a4ae0, #6f6fff);
+}
+#submitbtmprojform:active{
+    transform: translateY(0);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+#submittask{
+      padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #5a5aee, #7f7fff);
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+}
+#submittask:hover{
+   transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #4a4ae0, #6f6fff);
+}
 #projectform{
-    background-color: beige;
+    background-color: rgb(237, 212, 249);
     border: 2px solid black;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 20rem;
-    height: 6rem;
+    height: 8rem;
     row-gap: 0.8rem;
     justify-self: center;
     position: absolute;
     top: 10rem;
 }
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 70%;
+  outline: none;
+  padding: 0.5rem 1rem;
+  border: 2px solid #ccc;       /* border color */
+  border-radius: 0.5rem;        /* rounded corners */
+  background-color: #faeffd;    /* background */
+  color: #333;                  /* text color */
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s; /* smooth effect */
+}
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+textarea:hover {
+  border-color: #888;           /* darker border on hover */
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+  border-color: #5a5aee;        /* highlight color */
+  box-shadow: 0 0 5px rgba(90, 90, 238, 0.5);
+  outline: none;                /* remove default focus outline */
+}
+input[type="date"] {
+  padding: 0.5rem 1rem;
+  border: 2px solid #ccc;
+  border-radius: 0.5rem;
+  background-color: #f9f9f9;
+  color: #333;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+input[type="date"]:hover {
+  border-color: #888;
+}
+
+/* Focus */
+input[type="date"]:focus {
+  border-color: #5a5aee;
+  box-shadow: 0 0 5px rgba(90, 90, 238, 0.5);
+  outline: none;
+}
+input[type="radio"] {
+  accent-color: #5a5aee; /* changes the dot and border color */
+  cursor: pointer;
+}
 #taskform{
-      background-color: beige;
+      background-color: rgb(198, 178, 218);
     border: 2px solid black;
     border-radius: 1rem;
     display: flex;
@@ -79,6 +199,7 @@ body {
     justify-self: center;
     position: absolute;
     top: 10rem;
+    padding: 0.5rem;
 }
 #taskformedit{
       background-color: beige;
@@ -116,4 +237,16 @@ body {
 }
 .hiddentask{
   display: none;
+}
+#addprojbtn{
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #e0d1fa;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+#addprojbtn:hover{
+  background-color: #b1a1d0;
 }

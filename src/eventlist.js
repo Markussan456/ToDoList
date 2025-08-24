@@ -59,8 +59,10 @@ projectlistenr(){
         })
 }
 deleteproj(button,projectdivs){
-    const thecurrentproj = datamanger.getcurrentproj();
+    
 button.addEventListener("click",()=>{
+       const thecurrentproj = datamanger.getcurrentproj(); // grab it NOW
+        if (!thecurrentproj) return;
     datamanger.removeproject(thecurrentproj);
 projectdivs.remove();
 })
@@ -154,6 +156,11 @@ button.addEventListener("click",()=>{
     this.editingTask = task;
     task.div = taskdiv; // keep reference to the old div
 })
+}
+reattachlistenersproject(project,deletebtn,addtaskbtn,projectdiv){
+this.projectlistener(project,projectdiv);
+this.deleteproj(deletebtn,projectdiv);
+this.tasklistener(addtaskbtn,project);
 }
 }
 

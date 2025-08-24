@@ -32,7 +32,7 @@ const taskContainer = document.createElement("div");
     taskContainer.id = `tasks-${project.id}`; // unique id per project
     projectDiv.appendChild(taskContainer);
 
-return {projectDiv ,addtaskbtn,deletebtn};
+return {projectDiv ,addtaskbtn,deletebtn,project};
 
 }
 appendtask(project,task){
